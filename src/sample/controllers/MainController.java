@@ -11,7 +11,7 @@ public class MainController {
 
     public static void show() {
     FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainController.class.getResource("/sample/views/main.fxml"));
+            loader.setLocation(MainController.class.getResource("/resources/main.fxml"));
 
             try {
                 loader.load();

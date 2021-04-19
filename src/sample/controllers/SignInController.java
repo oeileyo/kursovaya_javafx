@@ -74,7 +74,7 @@ public class SignInController implements Initializable {
 
     public static void loadView(Stage stage) {
         try {
-            FXMLLoader loader = new FXMLLoader(SignInController.class.getResource("./views/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(SignInController.class.getResource("/views/login.fxml"));
             Parent view = loader.load();
             stage.setScene(new Scene(view));
 
