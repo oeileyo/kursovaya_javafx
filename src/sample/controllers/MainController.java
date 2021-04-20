@@ -10,18 +10,18 @@ import java.io.IOException;
 public class MainController {
 
     public static void show() {
-    FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainController.class.getResource("/resources/main.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(MainController.class.getResource("/views/main.fxml"));
 
-            try {
-                loader.load();
-            } catch (IOException e){
-                e.printStackTrace();
-            }
+        try {
+            loader.load();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
 
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-        };
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
+    }
 }

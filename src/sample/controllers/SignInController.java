@@ -39,8 +39,9 @@ public class SignInController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) { }
 
-    private void attachEvent() {
-        login_field.getScene().setOnKeyPressed(event -> { if (event.getCode() == KeyCode.ENTER) { login(); } });
+    private void buttonClick() {
+//        login_field.getScene().setOnKeyPressed(event -> { if (event.getCode() == KeyCode.ENTER) { login(); } });
+        login_button.setOnAction(event -> login());
     }
 
     @FXML
@@ -55,7 +56,7 @@ public class SignInController implements Initializable {
             } if (login_field.getText().isEmpty()) {
                 throw new AppException("Поле ввода логина должно быть заполнено.");
             } if (password_field.getText().isEmpty()) {
-                throw new AppException("Поле ввода логина должно быть заполнено.");
+                throw new AppException("Поле ввода пароля должно быть заполнено.");
             } else {
                 throw new AppException("Введен неверный логин или пароль.");
             }
@@ -79,7 +80,7 @@ public class SignInController implements Initializable {
             stage.setScene(new Scene(view));
 
             SignInController controller = loader.getController();
-            controller.attachEvent();
+            controller.buttonClick();
 
             stage.show();
         } catch (IOException e) {
