@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import sample.exceptions.AppException;
 
@@ -51,7 +50,7 @@ public class SignInController implements Initializable {
             String password_ = "admin";
 
             if (login_field.getText().equals(login_) && password_field.getText().equals(password_)) {
-                MainController.show(); //входим
+                MainMenuController.show(); //входим
                 cancel(); //закрываем
             } if (login_field.getText().isEmpty()) {
                 throw new AppException("Поле ввода логина должно быть заполнено.");
