@@ -1,7 +1,10 @@
 package sample.controllers;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,11 +17,15 @@ import java.util.ResourceBundle;
 
 public class MainMenuController {
 
+
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
+
+    @FXML
+    private AnchorPane mainAP;
 
     @FXML
     private Button mainButton;
@@ -35,8 +42,27 @@ public class MainMenuController {
     @FXML
     private Button aboutButton;
 
-    @FXML
-    private AnchorPane mainAP;
+
+    private void buttonClick(){
+        mainButton.setOnAction(event -> loadView(mainButton.getText()));
+        employeesButton.setOnAction(event -> loadView(employeesButton.getText()));
+        categoriesButton.setOnAction(event -> loadView(categoriesButton.getText()));
+        appointmentsButton.setOnAction(event -> loadView(appointmentsButton.getText()));
+        aboutButton.setOnAction(event -> loadView(aboutButton.getText()));
+    }
+
+    private void loadView(String buttonName) {
+        try {
+            mainAP.getChildren().clear(); // clear main anchor pane which shows the content
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/"+buttonName.toLowerCase()+".fxml"));
+            Parent view = loader.load();
+
+            mainAP.getChildren().add(view);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void show() {
         FXMLLoader loader = new FXMLLoader();
@@ -47,6 +73,9 @@ public class MainMenuController {
         } catch (IOException e){
             e.printStackTrace();
         }
+
+        MainMenuController controller = loader.getController();
+        controller.buttonClick();
 
         Parent root = loader.getRoot();
         Stage stage = new Stage();

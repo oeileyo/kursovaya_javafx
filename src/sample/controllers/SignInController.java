@@ -39,7 +39,6 @@ public class SignInController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) { }
 
     private void buttonClick() {
-//        login_field.getScene().setOnKeyPressed(event -> { if (event.getCode() == KeyCode.ENTER) { login(); } });
         login_button.setOnAction(event -> login());
     }
 

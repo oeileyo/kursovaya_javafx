@@ -17,21 +17,32 @@
             <Image url="@../assets/jabka.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="-1.0" layoutY="78.0" prefHeight="325.0" prefWidth="701.0" style="-fx-background-color: #FFE4B5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <AnchorPane layoutX="-1.0" layoutY="101.0" prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #FFE4B5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="101.0">
          <children>
-            <Button fx:id="login_button" layoutX="317.0" layoutY="378.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="560.0" text="Войти" AnchorPane.bottomAnchor="166.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0">
-               <font>
-                  <Font size="25.0" />
-               </font></Button>
-            <TextField fx:id="login_field" layoutX="324.0" layoutY="152.0" prefHeight="65.0" prefWidth="560.0" promptText="Login" AnchorPane.bottomAnchor="403.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="152.0">
-               <font>
-                  <Font size="25.0" />
-               </font></TextField>
-            <PasswordField fx:id="password_field" layoutX="320.0" layoutY="244.0" prefHeight="65.0" prefWidth="560.0" promptText="Password" AnchorPane.bottomAnchor="316.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="244.0">
-               <font>
-                  <Font size="25.0" />
-               </font></PasswordField>
-            <Label fx:id="message" layoutX="335.0" layoutY="44.0" textAlignment="CENTER" />
+            <AnchorPane layoutX="500.0" layoutY="70.0" prefHeight="532.0" prefWidth="560.0" style="-fx-background-color: #6ba8ad;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="70.0">
+               <children>
+                  <TextField fx:id="login_field" layoutX="28.0" layoutY="150.0" prefHeight="44.0" prefWidth="382.0" promptText="Login" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField fx:id="password_field" layoutX="24.0" layoutY="242.0" prefHeight="44.0" prefWidth="370.0" promptText="Password" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </PasswordField>
+                  <Button fx:id="login_button" layoutX="160.0" layoutY="356.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="222.0" text="Войти" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="160.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="message" alignment="CENTER" layoutX="28.0" layoutY="61.0" prefHeight="32.0" prefWidth="577.0" text="Введите логин и пароль для входа в систему" textAlignment="CENTER" textFill="#8b8b8b" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
          <opaqueInsets>
             <Insets />

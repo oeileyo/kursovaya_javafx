@@ -25,27 +25,27 @@
          <children>
             <HBox prefHeight="37.0" prefWidth="240.0">
                <children>
-                  <Button fx:id="mainButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="260.0" text="Главная" />
+                  <Button fx:id="mainButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="260.0" text="Main" />
                </children>
             </HBox>
             <HBox prefHeight="37.0" prefWidth="240.0">
                <children>
-                  <Button fx:id="employeesButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="248.0" text="Сотрудники" />
+                  <Button fx:id="employeesButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="248.0" text="Employees" />
                </children>
             </HBox>
             <HBox prefHeight="37.0" prefWidth="240.0">
                <children>
-                  <Button fx:id="categoriesButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="252.0" text="Категории" />
+                  <Button fx:id="categoriesButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="252.0" text="Categories" />
                </children>
             </HBox>
             <HBox prefHeight="37.0" prefWidth="240.0">
                <children>
-                  <Button fx:id="appointmentsButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="249.0" text="Записи" />
+                  <Button fx:id="appointmentsButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="249.0" text="Appointments" />
                </children>
             </HBox>
             <HBox prefHeight="37.0" prefWidth="242.0">
                <children>
-                  <Button fx:id="aboutButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="272.0" text="О проекте" />
+                  <Button fx:id="aboutButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="272.0" text="About" />
                </children>
             </HBox>
          </children>
