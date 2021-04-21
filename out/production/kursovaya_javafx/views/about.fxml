@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AboutController">
+   <children>
+      <Hyperlink alignment="CENTER" layoutX="367.0" layoutY="283.0" text="https://github.com/oeileyo/kursovaya_javafx" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Hyperlink>
+      <Label alignment="CENTER" layoutX="326.0" layoutY="143.0" text="Ссылки на код данного проекта:" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0">
+         <font>
+            <Font name="SignPainter-HouseScript" size="60.0" />
+         </font>
+      </Label>
+      <Hyperlink layoutX="365.0" layoutY="382.0" text="https://github.com/oeileyo/oleynik_kursovaya" AnchorPane.leftAnchor="355.0" AnchorPane.rightAnchor="355.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Hyperlink>
+   </children>
+</AnchorPane>
