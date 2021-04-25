@@ -25,7 +25,7 @@ public class EmployeesController implements ApiModel {
     private TableView<Employee> employees_table;
 
     @FXML
-    private TableColumn<Employee, Long> id_column;
+    private TableColumn<Employee, String> id_column;
 
     @FXML
     private TableColumn<Employee, String> first_name_column;
@@ -35,6 +35,10 @@ public class EmployeesController implements ApiModel {
 
     @FXML
     private Button add_button;
+
+    @FXML
+    private Button refresh_button;
+
 
     private Main main;
     private ApiSession apiSession = new ApiSession();
@@ -49,13 +53,14 @@ public class EmployeesController implements ApiModel {
 
         updateEmployeesTable();
 
-        id_column.setCellValueFactory(new PropertyValueFactory<Employee, Long>("id"));
+        id_column.setCellValueFactory(new PropertyValueFactory<Employee, String>("id"));
         first_name_column.setCellValueFactory(new PropertyValueFactory<Employee, String>("first_name"));
         last_name_column.setCellValueFactory(new PropertyValueFactory<Employee, String>("last_name"));
     }
 
     private void buttonClick() {
         add_button.setOnAction(event -> AddEmployeeController.show());
+        refresh_button.setOnAction(event -> updateEmployeesTable());
     }
 
     @FXML
@@ -64,8 +69,6 @@ public class EmployeesController implements ApiModel {
         employeeList.addAll(apiSession.getAllEmployees());
         employees_table.setItems(employeeList);
     }
-
-
 
 
     SimpleStringProperty id;
@@ -114,6 +117,14 @@ public class EmployeesController implements ApiModel {
         return gson.toJson(map);
     }
 
+    @Override
+    public String toJsonPut() {
+        Map<String, String> map = new HashMap<>();
+        map.put("id", id.get());
+        map.put("first_name", first_name.get());
+        map.put("last_name", first_name.get());
 
-
+        Gson gson = new Gson();
+        return gson.toJson(map);
+    }
 }

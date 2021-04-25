@@ -17,13 +17,6 @@ public class Employee implements ApiModel{
 
 //    private ObjectProperty<Company> company;
 
-    public Employee(Long id, String first_name, String last_name){
-        this.id = new SimpleLongProperty(id);
-        this.first_name = new SimpleStringProperty(first_name);
-        this.last_name = new SimpleStringProperty(last_name);
-//        this.company = new SimpleObjectProperty<Company>(company);
-    }
-
     public Employee(String first_name, String last_name){
         this.id = null;
         this.first_name = new SimpleStringProperty(first_name);
@@ -31,8 +24,17 @@ public class Employee implements ApiModel{
         //        this.company = new SimpleObjectProperty<Company>(company);
     }
 
+    public Employee(Long id, String first_name, String last_name){
+        this.id = new SimpleLongProperty(id);
+        this.first_name = new SimpleStringProperty(first_name);
+        this.last_name = new SimpleStringProperty(last_name);
+//        this.company = new SimpleObjectProperty<Company>(company);
+    }
+
     public Employee(){
-        this(null, null, null);
+        this.id = null;
+        this.first_name = null;
+        this.last_name =  null;
     }
 
 
@@ -44,26 +46,23 @@ public class Employee implements ApiModel{
 
     public String getLast_name() { return last_name.get(); }
 
-    public LongProperty get_id_property() { return id; }
 
-    public StringProperty get_first_name_property() { return first_name; }
+//    public LongProperty get_id_property() { return id; }
+//
+//    public StringProperty get_first_name_property() { return first_name; }
+//
+//    public StringProperty get_last_name_property() {
+//        return last_name;
+//    }
 
-    public StringProperty get_last_name_property() {
-        return last_name;
-    }
 
     public void setId(Long id) { this.id = new SimpleLongProperty((id)); }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = new SimpleStringProperty(first_name);
-    }
+    public void setFirst_name(String first_name) { this.first_name = new SimpleStringProperty(first_name); }
 
     public void setLast_name(String last_name) {
         this.last_name =  new SimpleStringProperty(last_name);
     }
-
-
-    public boolean alreadyExists(Long id_){ if (this.getId() == id_) {return true;} else { return false; } }
 
 
     @Override
@@ -73,6 +72,16 @@ public class Employee implements ApiModel{
         map.put("first_name", getFirst_name());
         map.put("last_name", getLast_name());
 //        map.put("company", new Gson().fromJson(getCompany().toJSON(), JsonObject.class));
+        return gson.toJson(map);
+    }
+
+    @Override
+    public String toJsonPut() {
+        Gson gson = new Gson();
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", String.valueOf(getId()));
+        map.put("first_name", first_name.get());
+        map.put("last_name", last_name.get());
         return gson.toJson(map);
     }
 }

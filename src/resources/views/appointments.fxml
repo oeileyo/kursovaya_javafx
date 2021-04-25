@@ -33,15 +33,19 @@
             </DatePicker>
             <RadioButton fx:id="status_selection" mnemonicParsing="false" prefHeight="34.0" prefWidth="91.0" text="Не занято">
                <HBox.margin>
-                  <Insets right="460.0" />
+                  <Insets right="250.0" />
                </HBox.margin>
             </RadioButton>
-            <Button fx:id="find_button" mnemonicParsing="false" prefHeight="36.0" prefWidth="113.0" text="Найти записи">
+            <Button fx:id="find_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" text="Найти записи">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="add_button" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" text="Добавить запись" />
+            <Button fx:id="add_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="163.0" text="Добавить запись">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></Button>
+            <Button fx:id="refresh_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="173.0" text="Обновить таблицу" />
          </children>
       </HBox>
       <TableView fx:id="appointments_table" layoutX="15.0" layoutY="93.0" prefHeight="491.0" prefWidth="1172.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">

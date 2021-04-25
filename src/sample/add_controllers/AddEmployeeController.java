@@ -11,10 +11,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import sample.controllers.EmployeesController;
 import sample.controllers.MainMenuController;
 import sample.models.Employee;
 import sample.utils.ApiSession;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -71,17 +73,14 @@ public class AddEmployeeController {
 
     private boolean isInputValid() {
         String errorMessage = "";
+
         if (first_name_field.getText() == null || first_name_field.getText().length() == 0) {
             errorMessage += "Не введено имя сотрудника.\n";
-        } else if (last_name_field.getText() == null || last_name_field.getText().length() == 0) {
+        }
+        if (last_name_field.getText() == null || last_name_field.getText().length() == 0) {
             errorMessage += "Не введена фамилия сотрудника.";
         }
 
-//        for (Employee emp : apiSession.getAllEmployees()){
-//            if (emp.alreadyExists(emp.getId())){
-//                errorMessage += "Сотрудник с таким ID уже существует!";
-//            }
-//        }
 
         if (errorMessage.length() == 0) {
             return true;
@@ -100,12 +99,10 @@ public class AddEmployeeController {
     private void handleOk() {
         if (isInputValid()) {
             Employee employee = new Employee(first_name_field.getText(), last_name_field.getText());
-//            employee.setFirst_name(first_name_field.getText());
-//            employee.setLast_name(last_name_field.getText());
             apiSession.createEmployee(employee);
             first_name_field.getScene().getWindow().hide();
         }
     }
 
-
+    public AddEmployeeController(){}
 }

@@ -1,4 +1,8 @@
 package sample.models;
 
-public interface ApiModel { String toJson();}
+public interface ApiModel {
+    String toJson();
+    String toJsonPut();
+}
+
 

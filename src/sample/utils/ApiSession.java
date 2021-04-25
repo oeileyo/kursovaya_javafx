@@ -3,6 +3,7 @@ package sample.utils;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import sample.models.Category;
 import sample.models.Employee;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class ApiSession {
 
     public void createEmployee(Employee employee) {
         System.out.println(employee.toJson());
-        HttpClass.PostRequest(url + "/employee", employee.toJson());
+        HttpClass.PostRequest(url + "/employees", employee.toJson());
     }
 
     public List<Employee> getAllEmployees() {
@@ -73,4 +74,65 @@ public class ApiSession {
         return HttpClass.DeleteRequest(url + "/employees/" + id);
     }
 
+
+
+    public void createCategory(Category category) {
+        System.out.println(category.toJson());
+        HttpClass.PostRequest(url + "/category", category.toJson());
+    }
+
+    public List<Category> getAllCategories() {
+        List<Category> result = new ArrayList<>();
+        String answer = HttpClass.GetRequest(url + "/category");
+        System.out.println(answer);
+
+        if (answer != null) {
+            JsonArray jsonAnswer = JsonParser.parseString(answer).getAsJsonArray();
+            System.out.println(jsonAnswer);
+
+            for (int i = 0; i < jsonAnswer.size(); i++) {
+                JsonObject currentCategory = jsonAnswer.get(i).getAsJsonObject();
+                result.add(categoryFromJson(currentCategory));
+            }
+        }
+        return result;
+    }
+
+    public Employee getCategoryById(Long id) {
+        String answer = HttpClass.GetRequest(url + "/category/"+id);
+        JsonObject currentCategory = JsonParser.parseString(answer).getAsJsonObject();
+        if (currentCategory != null){
+            return employeeFromJson(currentCategory);
+        }
+        return null;
+    }
+
+
+    public Category categoryFromJson(JsonObject currentCategory){
+        if (currentCategory.get("id") != null) {
+            Long id = currentCategory.get("id").getAsLong();
+            String name = currentCategory.get("name").getAsString();
+            Integer price = currentCategory.get("price").getAsInt();
+            Category category = new Category(id, name, price);
+            return category;
+        } else {
+            String name = currentCategory.get("name").getAsString();
+            Integer price = currentCategory.get("price").getAsInt();
+            Category category = new Category(name, price);
+            return category;
+        }
+    }
+
+    public void updateCategories(Category category) {
+        Long id = category.getId();
+        String jsonString = category.toJson();
+        HttpClass.PutRequest(url + "/category/" + id, jsonString);
+    }
+
+    public boolean deleteCategory(Category category) {
+        Long id = category.getId();
+        if (id == null)
+            return false;
+        return HttpClass.DeleteRequest(url + "/category/" + id);
+    }
 }
