@@ -1,4 +1,119 @@
 package sample.controllers;
 
-public class EmployeesController {
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import com.google.gson.Gson;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.cell.PropertyValueFactory;
+import sample.Main;
+import sample.add_controllers.AddEmployeeController;
+import sample.models.ApiModel;
+import sample.models.Employee;
+import sample.utils.ApiSession;
+
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class EmployeesController implements ApiModel {
+    @FXML
+    private TableView<Employee> employees_table;
+
+    @FXML
+    private TableColumn<Employee, Long> id_column;
+
+    @FXML
+    private TableColumn<Employee, String> first_name_column;
+
+    @FXML
+    private TableColumn<Employee, String> last_name_column;
+
+    @FXML
+    private Button add_button;
+
+    private Main main;
+    private ApiSession apiSession = new ApiSession();
+    private ObservableList<Employee> employeeList = FXCollections.observableArrayList();
+//    private ObservableList<String> companyNameList = FXCollections.observableArrayList();
+//    private List<Company> companyList = new ArrayList<>();
+
+
+    @FXML
+    private void initialize(){
+        buttonClick();
+
+        updateEmployeesTable();
+
+        id_column.setCellValueFactory(new PropertyValueFactory<Employee, Long>("id"));
+        first_name_column.setCellValueFactory(new PropertyValueFactory<Employee, String>("first_name"));
+        last_name_column.setCellValueFactory(new PropertyValueFactory<Employee, String>("last_name"));
+    }
+
+    private void buttonClick() {
+        add_button.setOnAction(event -> AddEmployeeController.show());
+    }
+
+    @FXML
+    private void updateEmployeesTable(){
+        employeeList.clear();
+        employeeList.addAll(apiSession.getAllEmployees());
+        employees_table.setItems(employeeList);
+    }
+
+
+
+
+    SimpleStringProperty id;
+    SimpleStringProperty first_name;
+    SimpleStringProperty last_name;
+
+    public EmployeesController(String id, String first_name, String last_name) {
+            this.id = new SimpleStringProperty(id);
+            this.first_name = new SimpleStringProperty(first_name);
+            this.last_name = new SimpleStringProperty(last_name);
+    }
+
+    public EmployeesController() {
+    }
+
+    public String getId() { return id.get(); }
+
+    public void setId(String id) { this.id = new SimpleStringProperty(id); }
+
+    public String getFirstName() { return first_name.get(); }
+
+    public void setFirstName(String first_name) { this.first_name = new SimpleStringProperty(first_name); }
+
+    public String getLastName() { return last_name.get(); }
+
+    public void setLastName(String last_name) { this.last_name = new SimpleStringProperty(last_name); }
+
+
+    @Override
+    public String toString() {
+        return "EmployeesController{" +
+            "id=" + id +
+            ", first_name=" + first_name +
+            ", last_name=" + last_name +
+            '}';
+    }
+
+    @Override
+    public String toJson() {
+        Map<String, String> map = new HashMap<>();
+        map.put("id", id.get());
+        map.put("first_name", first_name.get());
+        map.put("last_name", first_name.get());
+
+        Gson gson = new Gson();
+        return gson.toJson(map);
+    }
+
+
+
 }

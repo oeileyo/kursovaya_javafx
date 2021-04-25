@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #BFABE0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AppointmentsController">
    <children>
       <Label layoutX="385.0" layoutY="14.0" prefHeight="32.0" prefWidth="183.0" text="Таблица записей" textAlignment="CENTER" AnchorPane.bottomAnchor="562.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="1002.0" AnchorPane.topAnchor="6.0">
@@ -22,22 +21,22 @@
       </Label>
       <HBox layoutX="15.0" layoutY="52.0" prefHeight="32.0" prefWidth="773.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="49.0">
          <children>
-            <ComboBox prefHeight="41.0" prefWidth="183.0" promptText="Сотрудник">
+            <ComboBox fx:id="employee_selection" prefHeight="41.0" prefWidth="183.0" promptText="Сотрудник">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
             </ComboBox>
-            <DatePicker prefHeight="37.0" prefWidth="150.0" promptText="Дата">
+            <DatePicker fx:id="date_selection" prefHeight="37.0" prefWidth="150.0" promptText="Дата">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
             </DatePicker>
-            <RadioButton mnemonicParsing="false" prefHeight="34.0" prefWidth="91.0" text="Не занято">
+            <RadioButton fx:id="status_selection" mnemonicParsing="false" prefHeight="34.0" prefWidth="91.0" text="Не занято">
                <HBox.margin>
                   <Insets right="460.0" />
                </HBox.margin>
             </RadioButton>
-            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="113.0" text="Найти записи">
+            <Button fx:id="find_button" mnemonicParsing="false" prefHeight="36.0" prefWidth="113.0" text="Найти записи">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -45,16 +44,16 @@
             <Button fx:id="add_button" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" text="Добавить запись" />
          </children>
       </HBox>
-      <TableView layoutX="15.0" layoutY="93.0" prefHeight="491.0" prefWidth="1172.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+      <TableView fx:id="appointments_table" layoutX="15.0" layoutY="93.0" prefHeight="491.0" prefWidth="1172.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="195.9348373413086" text="Сотрудник" />
-            <TableColumn prefWidth="95.76751708984375" text="Дата" />
-            <TableColumn prefWidth="74.6614990234375" text="Время" />
-            <TableColumn prefWidth="120.60406494140625" text="Статус" />
-            <TableColumn prefWidth="221.8958740234375" text="Клиент" />
-            <TableColumn prefWidth="281.0614013671875" text="Категория" />
-            <TableColumn prefWidth="111.03680419921875" text="Цена" />
+          <TableColumn fx:id="id_column" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="employee_column" prefWidth="195.9348373413086" text="Сотрудник" />
+            <TableColumn fx:id="date_column" prefWidth="95.76751708984375" text="Дата" />
+            <TableColumn fx:id="time_column" prefWidth="74.6614990234375" text="Время" />
+            <TableColumn fx:id="status_column" prefWidth="120.60406494140625" text="Статус" />
+            <TableColumn fx:id="client_column" prefWidth="221.8958740234375" text="Клиент" />
+            <TableColumn fx:id="category_column" prefWidth="281.0614013671875" text="Категория" />
+            <TableColumn fx:id="price_column" prefWidth="111.03680419921875" text="Цена" />
         </columns>
       </TableView>
    </children>

@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #BFABE0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.EmployeesController">
    <children>
       <TableView fx:id="employees_table" layoutX="14.0" layoutY="47.0" prefHeight="339.0" prefWidth="772.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="47.0">
@@ -17,7 +16,7 @@
             <TableColumn fx:id="last_name_column" prefWidth="518.979736328125" text="Фамилия сотрудника" />
         </columns>
       </TableView>
-      <Label layoutX="282.0" layoutY="6.0" prefHeight="39.0" prefWidth="234.0" text="Таблица сотрудников" textAlignment="CENTER" AnchorPane.bottomAnchor="555.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="951.0" AnchorPane.topAnchor="6.0">
+      <Label layoutX="282.0" layoutY="6.0" prefHeight="39.0" prefWidth="234.0" text="Таблица сотрудников" textAlignment="CENTER" AnchorPane.bottomAnchor="562.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="951.0" AnchorPane.topAnchor="6.0">
          <font>
             <Font name="SignPainter-HouseScript" size="30.0" />
          </font>

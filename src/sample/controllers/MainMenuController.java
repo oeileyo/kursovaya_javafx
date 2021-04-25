@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainMenuController {
+public class MainMenuController implements Initializable {
 
 
     @FXML
@@ -42,20 +43,33 @@ public class MainMenuController {
     @FXML
     private Button aboutButton;
 
+    public static Stage stage = new Stage();
 
-    private void buttonClick(){
-        mainButton.setOnAction(event -> loadView(mainButton.getText()));
-        employeesButton.setOnAction(event -> loadView(employeesButton.getText()));
-        categoriesButton.setOnAction(event -> loadView(categoriesButton.getText()));
-        appointmentsButton.setOnAction(event -> loadView(appointmentsButton.getText()));
-        aboutButton.setOnAction(event -> loadView(aboutButton.getText()));
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/main.fxml"));
+            Parent view = loader.load();
+            mainAP.getChildren().add(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void loadView(String buttonName) {
+
+    private void buttonClick(){
+        mainButton.setOnAction(event -> loadView("/views/main.fxml"));
+        employeesButton.setOnAction(event -> loadView("/views/employees.fxml"));
+        categoriesButton.setOnAction(event -> loadView("/views/categories.fxml"));
+        appointmentsButton.setOnAction(event -> loadView("/views/appointments.fxml"));
+        aboutButton.setOnAction(event -> loadView("/views/about.fxml"));
+    }
+
+    private void loadView(String page_name) {
         try {
             mainAP.getChildren().clear(); // clear main anchor pane which shows the content
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/"+buttonName.toLowerCase()+".fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(page_name));
             Parent view = loader.load();
 
             mainAP.getChildren().add(view);
@@ -78,8 +92,9 @@ public class MainMenuController {
         controller.buttonClick();
 
         Parent root = loader.getRoot();
-        Stage stage = new Stage();
+
+        stage.setTitle("Massage Salon System");
         stage.setScene(new Scene(root));
-        stage.showAndWait();
+        stage.show();
     }
 }

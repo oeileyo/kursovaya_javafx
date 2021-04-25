@@ -7,17 +7,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #BFABE0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.CategoriesController">
    <children>
-      <TableView layoutX="14.0" layoutY="38.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="47.0">
+      <TableView fx:id="categories_table" layoutX="14.0" layoutY="47.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="47.0">
         <columns>
           <TableColumn fx:id="id_column" prefWidth="165.78361988067627" text="ID" />
           <TableColumn fx:id="name_column" minWidth="8.0" prefWidth="627.2163696289062" text="Название категории" />
             <TableColumn fx:id="price_column" prefWidth="378.36737060546875" text="Цена (руб.)" />
         </columns>
       </TableView>
-      <Label layoutX="385.0" layoutY="6.0" prefHeight="42.0" prefWidth="227.0" text="Таблица категорий" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="558.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="958.0" AnchorPane.topAnchor="6.0">
+      <Label layoutX="385.0" layoutY="6.0" prefHeight="42.0" prefWidth="227.0" text="Таблица категорий" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="562.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="958.0" AnchorPane.topAnchor="6.0">
          <font>
             <Font name="SignPainter-HouseScript" size="30.0" />
          </font>

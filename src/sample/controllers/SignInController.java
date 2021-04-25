@@ -76,6 +76,7 @@ public class SignInController implements Initializable {
             FXMLLoader loader = new FXMLLoader(SignInController.class.getResource("/views/login.fxml"));
             Parent view = loader.load();
             stage.setScene(new Scene(view));
+            stage.setTitle("Sign In");
 
             SignInController controller = loader.getController();
             controller.buttonClick();
