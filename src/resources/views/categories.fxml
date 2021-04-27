@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #BFABE0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.CategoriesController">
@@ -21,7 +23,30 @@
             <Font name="SignPainter-HouseScript" size="30.0" />
          </font>
       </Label>
-      <Button fx:id="add_button" layoutX="908.0" layoutY="12.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="Добавить запись" AnchorPane.bottomAnchor="576.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="13.0" />
-      <Button fx:id="refresh_button" layoutX="1033.0" layoutY="12.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="141.0" text="Обновить таблицу" AnchorPane.bottomAnchor="576.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="13.0" />
+      <HBox alignment="CENTER" layoutX="629.0" layoutY="6.0" prefHeight="29.0" prefWidth="570.0" AnchorPane.bottomAnchor="559.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="12.0">
+         <children>
+            <Button fx:id="add_button" mnemonicParsing="false" prefHeight="28.0" prefWidth="120.0" text="Добавить запись">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="edit_button" mnemonicParsing="false" prefHeight="28.0" prefWidth="120.0" text="Изменить запись">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="delete_button" mnemonicParsing="false" prefHeight="28.0" prefWidth="120.0" text="Удалить запись">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="refresh_button" mnemonicParsing="false" prefHeight="28.0" prefWidth="141.0" text="Обновить таблицу" />
+         </children>
+      </HBox>
+      <Label fx:id="message" alignment="CENTER" layoutX="247.0" layoutY="10.0" prefHeight="30.0" prefWidth="343.0" textAlignment="CENTER" textFill="#9c0909">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

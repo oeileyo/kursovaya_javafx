@@ -26,29 +26,34 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </ComboBox>
-            <DatePicker fx:id="date_selection" prefHeight="37.0" prefWidth="150.0" promptText="Дата">
+            <DatePicker fx:id="date_selection" prefHeight="32.0" prefWidth="110.0" promptText="Дата">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
             </DatePicker>
-            <RadioButton fx:id="status_selection" mnemonicParsing="false" prefHeight="34.0" prefWidth="91.0" text="Не занято">
+            <RadioButton fx:id="status_selection" mnemonicParsing="false" prefHeight="32.0" prefWidth="136.0" text="Только свободные">
                <HBox.margin>
-                  <Insets right="250.0" />
+                  <Insets right="20.0" />
                </HBox.margin>
             </RadioButton>
-            <Button fx:id="find_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" text="Найти записи">
+            <Button fx:id="find_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="130.0" text="Найти записи">
+               <HBox.margin>
+                  <Insets right="150.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="add_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="130.0" text="Добавить запись">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></Button>
+            <Button fx:id="delete_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="130.0" text="Удалить запись">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="add_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="163.0" text="Добавить запись">
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin></Button>
-            <Button fx:id="refresh_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="173.0" text="Обновить таблицу" />
+            <Button fx:id="refresh_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="130.0" text="Обновить таблицу" />
          </children>
       </HBox>
-      <TableView fx:id="appointments_table" layoutX="15.0" layoutY="93.0" prefHeight="491.0" prefWidth="1172.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+      <TableView fx:id="appointments_table" layoutX="15.0" layoutY="93.0" prefHeight="497.0" prefWidth="1172.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
         <columns>
           <TableColumn fx:id="id_column" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="employee_column" prefWidth="195.9348373413086" text="Сотрудник" />
@@ -60,5 +65,6 @@
             <TableColumn fx:id="price_column" prefWidth="111.03680419921875" text="Цена" />
         </columns>
       </TableView>
+      <HBox layoutX="13.0" layoutY="94.0" prefHeight="35.0" prefWidth="224.0" />
    </children>
 </AnchorPane>

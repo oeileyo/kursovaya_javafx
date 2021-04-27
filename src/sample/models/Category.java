@@ -69,7 +69,7 @@ public class Category implements ApiModel {
     public String toJsonPut() {
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<>();
-        map.put("id", String.valueOf(getId()));
+        map.put("id", id.get());
         map.put("name", name.get());
         map.put("price", String.valueOf(getPrice()));
         return gson.toJson(map);

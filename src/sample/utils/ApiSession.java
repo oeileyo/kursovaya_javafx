@@ -63,7 +63,7 @@ public class ApiSession {
 
     public void updateEmployee(Employee employee) {
         Long id = employee.getId();
-        String jsonString = employee.toJson();
+        String jsonString = employee.toJsonPut();
         HttpClass.PutRequest(url + "/employees/" + id, jsonString);
     }
 
@@ -125,7 +125,8 @@ public class ApiSession {
 
     public void updateCategories(Category category) {
         Long id = category.getId();
-        String jsonString = category.toJson();
+        String jsonString = category.toJsonPut();
+//        System.out.println("!!!!  " + jsonString);
         HttpClass.PutRequest(url + "/category/" + id, jsonString);
     }
 

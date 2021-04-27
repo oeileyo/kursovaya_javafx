@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import com.google.gson.Gson;
@@ -11,10 +12,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.Main;
 import sample.add_controllers.AddEmployeeController;
+import sample.edit_controllers.EditEmployeeController;
 import sample.models.ApiModel;
 import sample.models.Employee;
 import sample.utils.ApiSession;
-
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,6 +40,15 @@ public class EmployeesController implements ApiModel {
     @FXML
     private Button refresh_button;
 
+    @FXML
+    private Label message;
+
+    @FXML
+    private Button delete_button;
+
+    @FXML
+    private Button edit_button;
+
 
     private Main main;
     private ApiSession apiSession = new ApiSession();
@@ -61,6 +71,33 @@ public class EmployeesController implements ApiModel {
     private void buttonClick() {
         add_button.setOnAction(event -> AddEmployeeController.show());
         refresh_button.setOnAction(event -> updateEmployeesTable());
+        edit_button.setOnAction(event -> {
+            String errorMessage = "";
+            message.setText(errorMessage);
+            int selectedIndex = employees_table.getSelectionModel().getSelectedIndex();
+
+            if (selectedIndex >= 0) {
+                Employee employee = employees_table.getItems().get(selectedIndex);
+                EditEmployeeController.show(employee);
+            } else {
+                errorMessage += "Выберите строку, которую хотите изменить.";
+                message.setText(errorMessage);
+            }
+        });
+        delete_button.setOnAction(event -> {
+            String errorMessage = "";
+            message.setText(errorMessage);
+            int selectedIndex = employees_table.getSelectionModel().getSelectedIndex();
+
+            if (selectedIndex >= 0) {
+                Employee employee = employees_table.getItems().get(selectedIndex);
+                apiSession.deleteEmployee(employee);
+                employees_table.getItems().remove(selectedIndex);
+            } else {
+                errorMessage += "Выберите строку, которую хотите удалить.";
+                message.setText(errorMessage);
+            }
+        });
     }
 
     @FXML

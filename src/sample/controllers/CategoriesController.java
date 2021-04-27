@@ -8,12 +8,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.Main;
 import sample.add_controllers.AddCategoryController;
 import sample.add_controllers.AddEmployeeController;
+import sample.edit_controllers.EditCategoryController;
+import sample.edit_controllers.EditEmployeeController;
 import sample.models.ApiModel;
 import sample.models.Category;
 import sample.models.Employee;
@@ -42,6 +45,15 @@ public class CategoriesController implements  ApiModel{
     @FXML
     private Button refresh_button;
 
+    @FXML
+    private Button delete_button;
+
+    @FXML
+    private Button edit_button;
+
+    @FXML
+    private Label message;
+
 
     private Main main;
     private ApiSession apiSession = new ApiSession();
@@ -61,6 +73,33 @@ public class CategoriesController implements  ApiModel{
     private void buttonClick() {
         add_button.setOnAction(event -> AddCategoryController.show());
         refresh_button.setOnAction(event -> updateCategoryTable());
+        edit_button.setOnAction(event -> {
+            String errorMessage = "";
+            message.setText(errorMessage);
+            int selectedIndex = categories_table.getSelectionModel().getSelectedIndex();
+
+            if (selectedIndex >= 0) {
+                Category category = categories_table.getItems().get(selectedIndex);
+                EditCategoryController.show(category);
+            } else {
+                errorMessage += "Выберите строку, которую хотите изменить.";
+                message.setText(errorMessage);
+            }
+        });
+        delete_button.setOnAction(event -> {
+            String errorMessage = "";
+            message.setText(errorMessage);
+            int selectedIndex = categories_table.getSelectionModel().getSelectedIndex();
+
+            if (selectedIndex >= 0) {
+                Category category = categories_table.getItems().get(selectedIndex);
+                apiSession.deleteCategory(category);
+                categories_table.getItems().remove(selectedIndex);
+            } else {
+                errorMessage += "Выберите строку, которую хотите удалить.";
+                message.setText(errorMessage);
+            }
+        });
     }
 
     @FXML
