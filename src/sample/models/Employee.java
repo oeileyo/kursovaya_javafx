@@ -76,7 +76,7 @@ public class Employee implements ApiModel{
     }
 
     @Override
-    public String toJsonPut() {
+    public String toJsonWithId() {
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<>();
         map.put("id", String.valueOf(getId()));

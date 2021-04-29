@@ -166,7 +166,7 @@ public class CategoriesController implements  ApiModel{
     }
 
     @Override
-    public String toJsonPut() {
+    public String toJsonWithId() {
         Map<String, String> map = new HashMap<>();
         map.put("id", id.get());
         map.put("name", name.get());

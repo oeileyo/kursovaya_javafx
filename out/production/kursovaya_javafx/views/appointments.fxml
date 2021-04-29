@@ -23,17 +23,17 @@
          <children>
             <ComboBox fx:id="employee_selection" prefHeight="41.0" prefWidth="183.0" promptText="Сотрудник">
                <HBox.margin>
-                  <Insets right="20.0" />
+                  <Insets right="15.0" />
                </HBox.margin>
             </ComboBox>
-            <DatePicker fx:id="date_selection" prefHeight="32.0" prefWidth="110.0" promptText="Дата">
+            <DatePicker fx:id="date_selection" prefHeight="32.0" prefWidth="136.0" promptText="Дата">
                <HBox.margin>
-                  <Insets right="20.0" />
+                  <Insets right="15.0" />
                </HBox.margin>
             </DatePicker>
             <RadioButton fx:id="status_selection" mnemonicParsing="false" prefHeight="32.0" prefWidth="136.0" text="Только свободные">
                <HBox.margin>
-                  <Insets right="20.0" />
+                  <Insets right="15.0" />
                </HBox.margin>
             </RadioButton>
             <Button fx:id="find_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="130.0" text="Найти записи">
@@ -43,11 +43,11 @@
             </Button>
             <Button fx:id="add_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="130.0" text="Добавить запись">
                <HBox.margin>
-                  <Insets right="20.0" />
+                  <Insets right="15.0" />
                </HBox.margin></Button>
             <Button fx:id="delete_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="130.0" text="Удалить запись">
                <HBox.margin>
-                  <Insets right="20.0" />
+                  <Insets right="15.0" />
                </HBox.margin>
             </Button>
             <Button fx:id="refresh_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="130.0" text="Обновить таблицу" />
@@ -66,5 +66,6 @@
         </columns>
       </TableView>
       <HBox layoutX="13.0" layoutY="94.0" prefHeight="35.0" prefWidth="224.0" />
+      <Label fx:id="message" alignment="CENTER" layoutX="209.0" layoutY="14.0" prefHeight="32.0" prefWidth="408.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>

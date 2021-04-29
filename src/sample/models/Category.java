@@ -37,21 +37,15 @@ public class Category implements ApiModel {
 
     public Long getId() { return id.get(); }
 
-    public LongProperty idProperty() { return id; }
-
     public void setId(Long id) { this.id = new SimpleLongProperty(id); }
 
 
     public String getName() { return name.get(); }
 
-    public StringProperty nameProperty() { return name; }
-
     public void setName(String name) { this.name = new SimpleStringProperty(name); }
 
 
     public Integer getPrice() { return price.get(); }
-
-    public IntegerProperty priceProperty() { return price; }
 
     public void setPrice(Integer price) { this.price = new SimpleIntegerProperty(price); }
 
@@ -66,7 +60,7 @@ public class Category implements ApiModel {
     }
 
     @Override
-    public String toJsonPut() {
+    public String toJsonWithId() {
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<>();
         map.put("id", id.get());

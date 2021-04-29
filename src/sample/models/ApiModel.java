@@ -2,7 +2,7 @@ package sample.models;
 
 public interface ApiModel {
     String toJson();
-    String toJsonPut();
+    String toJsonWithId();
 }
 
 
