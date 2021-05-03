@@ -14,7 +14,6 @@ public class Appointment implements ApiModel {
     private LongProperty id;
     private LongProperty employee_id;
     private StringProperty employee_name;
-    private StringProperty date_time;
     private StringProperty date;
     private StringProperty time;
     private StringProperty status;
@@ -25,13 +24,12 @@ public class Appointment implements ApiModel {
     private IntegerProperty price;
 
     // занятая запись
-    public Appointment(Long id, Long employee_id, String employee_name, LocalDate date_time, String date,
+    public Appointment(Long id, Long employee_id, String employee_name, String date,
                        String time, String status, Long client_id, String client_name, Long category_id,
                        String category_name, Integer price) {
         this.id = new SimpleLongProperty(id);
         this.employee_id = new SimpleLongProperty(employee_id);
         this.employee_name = new SimpleStringProperty(employee_name);
-//        this.date_time = new SimpleProperty(date_time);
         this.date = new SimpleStringProperty(date);
         this.time = new SimpleStringProperty(time);
         this.status = new SimpleStringProperty(status);
@@ -43,12 +41,11 @@ public class Appointment implements ApiModel {
     }
 
     // свободная запись
-    public Appointment(Long id, Long employee_id, String employee_name, LocalDate date_time, String date,
+    public Appointment(Long id, Long employee_id, String employee_name, String date,
                        String time, String status) {
         this.id = new SimpleLongProperty(id);
         this.employee_id = new SimpleLongProperty(employee_id);
         this.employee_name = new SimpleStringProperty(employee_name);
-//        this.date_time = new SimpleProperty(date_time);
         this.date = new SimpleStringProperty(date);
         this.time = new SimpleStringProperty(time);
         this.status = new SimpleStringProperty(status);
@@ -60,13 +57,12 @@ public class Appointment implements ApiModel {
     }
 
     // новая занятая запись
-    public Appointment(Long employee_id, String employee_name, LocalDate date_time, String date,
+    public Appointment(Long employee_id, String employee_name, String date,
                        String time, String status, Long client_id, String client_name, Long category_id,
                        String category_name, Integer price) {
         this.id = null;
         this.employee_id = new SimpleLongProperty(employee_id);
         this.employee_name = new SimpleStringProperty(employee_name);
-//        this.date_time = new SimpleProperty(date_time);
         this.date = new SimpleStringProperty(date);
         this.time = new SimpleStringProperty(time);
         this.status = new SimpleStringProperty(status);
@@ -78,12 +74,10 @@ public class Appointment implements ApiModel {
     }
 
     // новая свободная запись
-    public Appointment(Long employee_id, String employee_name, LocalDate date_time, String date,
-                       String time, String status) {
+    public Appointment(Long employee_id, String employee_name, String date, String time, String status) {
         this.id = null;
         this.employee_id = new SimpleLongProperty(employee_id);
         this.employee_name = new SimpleStringProperty(employee_name);
-//        this.date_time = new SimpleProperty(date_time);
         this.date = new SimpleStringProperty(date);
         this.time = new SimpleStringProperty(time);
         this.status = new SimpleStringProperty(status);
@@ -99,7 +93,6 @@ public class Appointment implements ApiModel {
         this.id = null;
         this.employee_id = null;
         this.employee_name = null;
-//        this.date_time = new SimpleProperty(date_time);
         this.date = null;
         this.time = null;
         this.status = null;
@@ -133,8 +126,6 @@ public class Appointment implements ApiModel {
 
     public int getPrice() { return price.get(); }
 
-    public IntegerProperty priceProperty() { return price; }
-
 
     public void setId(long id) { this.id.set(id); }
 
@@ -162,7 +153,8 @@ public class Appointment implements ApiModel {
     public String toJson() {
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<>();
-        map.put("date_time", DateUtil.toDateFormat(date.get(), time.get()));
+        map.put("date", date.get());
+        map.put("time", time.get());
         map.put("status", status.get()=="Свободно" ? true : false);
         map.put("employee_id", employee_id.get());
         map.put("client_id", client_id.get());
@@ -175,7 +167,8 @@ public class Appointment implements ApiModel {
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<>();
         map.put("id", id.get());
-        map.put("date_time", DateUtil.toDateFormat(date.get(), time.get()));
+        map.put("date", date.get());
+        map.put("time", time.get());
         map.put("status", status.get()=="Свободно" ? true : false);
         map.put("employee_id", employee_id.get());
         map.put("client_id", client_id.get());

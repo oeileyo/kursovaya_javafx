@@ -175,58 +175,53 @@ public class ApiSession {
 
     public Appointment appointmentFromJson(JsonObject currentAppointment){
         if (currentAppointment.get("id") != null) {
-            if (currentAppointment.get("status").getAsBoolean()){ // запись занята
+            if (!currentAppointment.get("status").getAsBoolean()){ // запись занята
                 Long id = currentAppointment.get("id").getAsLong();
                 Long employee_id = currentAppointment.get("employee_id").getAsLong();
-                String employee_name = getEmployeeById(employee_id).getFirst_name() + getEmployeeById(employee_id).getLast_name();
-                LocalDate date_time = DateUtil.toDateFormat(currentAppointment.get("date_time").getAsString());
-                String date = DateUtil.dateToString(date_time);
-                String time = DateUtil.timeToString(date_time);
+                String employee_name = getEmployeeById(employee_id).getFirst_name()+" "+getEmployeeById(employee_id).getLast_name();
+                String date = currentAppointment.get("date").getAsString();
+                String time = currentAppointment.get("time").getAsString();
                 String status = (currentAppointment.get("status").getAsBoolean() ? "Свободно" : "Занято");
                 Long client_id = currentAppointment.get("client_id").getAsLong();
-                String client_name = getClientById(client_id).getFirst_name() + getClientById(client_id).getLast_name();
+                String client_name = getClientById(client_id).getFirst_name()+" "+getClientById(client_id).getLast_name();
                 Long category_id = currentAppointment.get("category_id").getAsLong();
                 String category_name = getCategoryById(category_id).getName();
                 Integer price = getCategoryById(category_id).getPrice();
-                Appointment appointment = new Appointment(id, employee_id, employee_name, date_time, date, time,
+                Appointment appointment = new Appointment(id, employee_id, employee_name, date, time,
                         status, client_id, client_name, category_id, category_name, price);
                 return appointment;
             } else { // запись свободна
                 Long id = currentAppointment.get("id").getAsLong();
                 Long employee_id = currentAppointment.get("employee_id").getAsLong();
-                String employee_name = getEmployeeById(employee_id).getFirst_name() + getEmployeeById(employee_id).getLast_name();
-                LocalDate date_time = DateUtil.toDateFormat(currentAppointment.get("date_time").getAsString());
-                String date = DateUtil.dateToString(date_time);
-                String time = DateUtil.timeToString(date_time);
+                String employee_name = getEmployeeById(employee_id).getFirst_name()+" "+getEmployeeById(employee_id).getLast_name();
+                String date = currentAppointment.get("date").getAsString();
+                String time = currentAppointment.get("time").getAsString();
                 String status = (currentAppointment.get("status").getAsBoolean() ? "Свободно" : "Занято");
-                Appointment appointment = new Appointment(id, employee_id, employee_name, date_time, date, time, status);
+                Appointment appointment = new Appointment(id, employee_id, employee_name, date, time, status);
                 return appointment;
             }
         } else {
-            if (currentAppointment.get("status").getAsBoolean()) {
+            if (!currentAppointment.get("status").getAsBoolean()) {
                 Long employee_id = currentAppointment.get("employee_id").getAsLong();
-                String employee_name = getEmployeeById(employee_id).getFirst_name() + getEmployeeById(employee_id).getLast_name();
-                LocalDate date_time = DateUtil.toDateFormat(currentAppointment.get("date_time").getAsString());
-                String date = DateUtil.dateToString(date_time);
-                String time = DateUtil.timeToString(date_time);
+                String employee_name = getEmployeeById(employee_id).getFirst_name()+" "+getEmployeeById(employee_id).getLast_name();
+                String date = currentAppointment.get("date").getAsString();
+                String time = currentAppointment.get("time").getAsString();
                 String status = (currentAppointment.get("status").getAsBoolean() ? "Свободно" : "Занято");
                 Long client_id = currentAppointment.get("client_id").getAsLong();
-                String client_name = getClientById(client_id).getFirst_name() + getClientById(client_id).getLast_name();
+                String client_name = getClientById(client_id).getFirst_name()+" "+getClientById(client_id).getLast_name();
                 Long category_id = currentAppointment.get("category_id").getAsLong();
                 String category_name = getCategoryById(category_id).getName();
                 Integer price = getCategoryById(category_id).getPrice();
-                Appointment appointment = new Appointment(employee_id, employee_name, date_time, date, time,
+                Appointment appointment = new Appointment(employee_id, employee_name, date, time,
                         status, client_id, client_name, category_id, category_name, price);
                 return appointment;
             } else {
-                Long id = currentAppointment.get("id").getAsLong();
                 Long employee_id = currentAppointment.get("employee_id").getAsLong();
-                String employee_name = getEmployeeById(employee_id).getFirst_name() + getEmployeeById(employee_id).getLast_name();
-                LocalDate date_time = DateUtil.toDateFormat(currentAppointment.get("date_time").getAsString());
-                String date = DateUtil.dateToString(date_time);
-                String time = DateUtil.timeToString(date_time);
+                String employee_name = getEmployeeById(employee_id).getFirst_name()+" "+getEmployeeById(employee_id).getLast_name();
+                String date = currentAppointment.get("date").getAsString();
+                String time = currentAppointment.get("time").getAsString();
                 String status = (currentAppointment.get("status").getAsBoolean() ? "Свободно" : "Занято");
-                Appointment appointment = new Appointment(id, employee_id, employee_name, date_time, date, time, status);
+                Appointment appointment = new Appointment(employee_id, employee_name, date, time, status);
                 return appointment;
             }
         }

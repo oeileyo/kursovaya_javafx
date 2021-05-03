@@ -65,7 +65,6 @@
             <TableColumn fx:id="price_column" prefWidth="111.03680419921875" text="Цена" />
         </columns>
       </TableView>
-      <HBox layoutX="13.0" layoutY="94.0" prefHeight="35.0" prefWidth="224.0" />
       <Label fx:id="message" alignment="CENTER" layoutX="209.0" layoutY="14.0" prefHeight="32.0" prefWidth="408.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>

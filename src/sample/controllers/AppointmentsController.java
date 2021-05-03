@@ -1,7 +1,10 @@
 package sample.controllers;
 
 import com.google.gson.Gson;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -83,12 +86,12 @@ public class AppointmentsController implements ApiModel {
         updateAppointmentTable();
 
         id_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("id"));
-        employee_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("employee_id"));
-        date_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("id"));
-        time_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("id"));
-        status_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("str_status"));
-        client_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("id"));
-        category_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("id"));
+        employee_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("employee_name"));
+        date_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("date"));
+        time_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("time"));
+        status_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("status"));
+        client_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("client_name"));
+        category_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("category_name"));
         price_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("price"));
     }
 
@@ -133,46 +136,88 @@ public class AppointmentsController implements ApiModel {
 
 
     SimpleStringProperty id;
-    SimpleStringProperty name;
+    SimpleStringProperty employee_name;
+    SimpleStringProperty employee_id;
+    SimpleStringProperty date;
+    SimpleStringProperty time;
+    SimpleStringProperty status;
+    SimpleStringProperty client_name;
+    SimpleStringProperty client_id;
+    SimpleStringProperty category_name;
+    SimpleStringProperty category_id;
     SimpleStringProperty price;
 
 
-    public AppointmentsController(String id, String name, String price) {
+    public AppointmentsController(String id, String employee_id, String employee_name, String date, String time,
+                                  String status, String client_id, String client_name, String category_id,
+                                  String category_name, String price) {
         this.id = new SimpleStringProperty(id);
-        this.name = new SimpleStringProperty(name);
+        this.employee_name = new SimpleStringProperty(employee_name);
+        this.employee_id = new SimpleStringProperty(employee_id);
+        this.date = new SimpleStringProperty(date);
+        this.time = new SimpleStringProperty(time);
+        this.status = new SimpleStringProperty(status);
+        this.client_name = new SimpleStringProperty(client_name);
+        this.client_id = new SimpleStringProperty(client_id);
+        this.category_name = new SimpleStringProperty(category_name);
+        this.category_id = new SimpleStringProperty(category_id);
         this.price = new SimpleStringProperty(price);
     }
 
     public AppointmentsController() {
     }
 
-    public String getId() { return id.get(); }
 
-    public SimpleStringProperty idProperty() { return id; }
+    public String getId() { return id.get(); }
 
     public void setId(String id) { this.id.set(id); }
 
+    public String getEmployee_name() { return employee_name.get(); }
 
-    public String getName() { return name.get(); }
+    public void setEmployee_name(String employee_name) { this.employee_name.set(employee_name); }
 
-    public SimpleStringProperty nameProperty() { return name; }
+    public String getDate() { return date.get(); }
 
-    public void setName(String name) { this.name.set(name); }
+    public void setDate(String date) { this.date.set(date); }
 
+    public String getTime() { return time.get(); }
+
+    public void setTime(String time) { this.time.set(time); }
+
+    public String getStatus() { return status.get(); }
+
+    public void setStatus(String status) { this.status.set(status); }
+
+    public String getClient_name() { return client_name.get(); }
+
+    public void setClient_name(String client_name) { this.client_name.set(client_name); }
+
+    public String getClient_id() { return client_id.get(); }
+
+    public void setClient_id(String client_id) { this.client_id.set(client_id); }
+
+    public String getCategory_id() { return category_id.get(); }
+
+    public void setCategory_id(String category_id) { this.category_id.set(category_id); }
+
+    public String getCategory_name() { return category_name.get(); }
+
+    public void setCategory_name(String category_name) { this.category_name.set(category_name); }
 
     public String getPrice() { return price.get(); }
 
-    public SimpleStringProperty priceProperty() { return price; }
-
     public void setPrice(String price) { this.price.set(price); }
-
 
     @Override
     public String toString() {
-        return "EmployeesController{" +
+        return "AppointmentsController{" +
                 "id=" + id +
-                ", name=" + name +
-                ", price=" + price +
+                ", employee_id=" + employee_id +
+                ", category_id=" + category_id +
+                ", client_id=" + client_id +
+                ", status=" + status +
+                ", date=" + date +
+                ", time= " + time +
                 '}';
     }
 
@@ -180,7 +225,8 @@ public class AppointmentsController implements ApiModel {
     public String toJson() {
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<>();
-        map.put("date_time", DateUtil.toDateFormat(date.get(), time.get()));
+        map.put("date", date.get());
+        map.put("time", time.get());
         map.put("status", status.get()=="Свободно" ? true : false);
         map.put("employee_id", employee_id.get());
         map.put("client_id", client_id.get());
@@ -193,7 +239,8 @@ public class AppointmentsController implements ApiModel {
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<>();
         map.put("id", id.get());
-        map.put("date_time", DateUtil.toDateFormat(date.get(), time.get()));
+        map.put("date", date.get());
+        map.put("time", time.get());
         map.put("status", status.get()=="Свободно" ? true : false);
         map.put("employee_id", employee_id.get());
         map.put("client_id", client_id.get());
