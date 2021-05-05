@@ -10,16 +10,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #FF7F50;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.SignInController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #BFABE0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.SignInController">
    <children>
       <ImageView blendMode="SRC_ATOP" fitHeight="60.0" fitWidth="70.0" layoutX="13.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="9.0">
          <image>
             <Image url="@../assets/jabka.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="-1.0" layoutY="101.0" prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #FFE4B5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="101.0">
+      <AnchorPane layoutX="-1.0" layoutY="101.0" prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #b0b6ea;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="101.0">
          <children>
-            <AnchorPane layoutX="500.0" layoutY="70.0" prefHeight="532.0" prefWidth="560.0" style="-fx-background-color: #6ba8ad;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="70.0">
+            <AnchorPane layoutX="500.0" layoutY="70.0" prefHeight="532.0" prefWidth="560.0" style="-fx-background-color: #BFABE0;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="70.0">
                <children>
                   <TextField fx:id="login_field" layoutX="28.0" layoutY="150.0" prefHeight="44.0" prefWidth="382.0" promptText="Login" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <font>

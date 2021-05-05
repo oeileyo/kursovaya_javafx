@@ -24,13 +24,10 @@ import java.util.Map;
 public class AppointmentsController implements ApiModel {
 
     @FXML
-    private ComboBox<Employee> employee_selection;
+    private ComboBox<String> employee_selection;
 
     @FXML
     private DatePicker date_selection;
-
-    @FXML
-    private RadioButton status_selection;
 
     @FXML
     private Button find_button;
@@ -63,9 +60,6 @@ public class AppointmentsController implements ApiModel {
     private TableColumn<Appointment, String> time_column;
 
     @FXML
-    private TableColumn<Appointment, String> status_column;
-
-    @FXML
     private TableColumn<Appointment, String> client_column;
 
     @FXML
@@ -77,11 +71,14 @@ public class AppointmentsController implements ApiModel {
 
     private Main main;
     private ApiSession apiSession = new ApiSession();
+    ObservableList<Employee> employeeList = FXCollections.observableArrayList();
+    ObservableList<String> employeeNameList = FXCollections.observableArrayList();
     private ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
 
     @FXML
     private void initialize(){
         buttonClick();
+        employeeComboBox();
 
         updateAppointmentTable();
 
@@ -89,28 +86,14 @@ public class AppointmentsController implements ApiModel {
         employee_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("employee_name"));
         date_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("date"));
         time_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("time"));
-        status_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("status"));
         client_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("client_name"));
         category_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("category_name"));
         price_column.setCellValueFactory(new PropertyValueFactory<Appointment, String>("price"));
     }
 
     private void buttonClick() {
-//        add_button.setOnAction(event -> AddAppointmentController.show());
+        add_button.setOnAction(event -> AddAppointmentController.show());
         refresh_button.setOnAction(event -> updateAppointmentTable());
-//        edit_button.setOnAction(event -> {
-//            String errorMessage = "";
-//            message.setText(errorMessage);
-//            int selectedIndex = appointments_table.getSelectionModel().getSelectedIndex();
-//
-//            if (selectedIndex >= 0) {
-//                Appointment appointment = appointments_table.getItems().get(selectedIndex);
-//                EditAppointmentController.show(appointment);
-//            } else {
-//                errorMessage += "Выберите строку, которую хотите изменить.";
-//                message.setText(errorMessage);
-//            }
-//        });
         delete_button.setOnAction(event -> {
             String errorMessage = "";
             message.setText(errorMessage);
@@ -125,6 +108,37 @@ public class AppointmentsController implements ApiModel {
                 message.setText(errorMessage);
             }
         });
+        find_button.setOnAction(event -> {
+            if (employee_selection.getValue() != null && !employee_selection.getValue().equals("<All Employees>")) {
+                if (date_selection.getValue() != null) {
+                    Long employee_id = apiSession.GetEmployeeByName(employee_selection.getValue());
+                    String date = DateUtil.dateToString(date_selection.getValue());
+                    selectEmployeeAndDateAppointmentTable(employee_id, date);
+                } else {
+                    Long employee_id = apiSession.GetEmployeeByName(employee_selection.getValue());
+                    selectEmployeeAppointmentTable(employee_id);
+                }
+            } else {
+                if (date_selection.getValue() != null) {
+                    String date = DateUtil.dateToString(date_selection.getValue());
+                    selectDateAppointmentTable(date);
+                } else {
+                    updateAppointmentTable();
+                }
+            }
+        });
+    }
+
+    private void employeeComboBox(){
+        employeeList.clear();
+        employeeList.addAll(apiSession.getAllEmployees());
+
+        employeeNameList.clear();
+        employeeNameList.add("<All Employees>");
+        for (Employee employee: employeeList){
+            employeeNameList.add(employee.getFirst_name() + " " + employee.getLast_name());
+        }
+        employee_selection.setItems(employeeNameList);
     }
 
     @FXML
@@ -134,13 +148,43 @@ public class AppointmentsController implements ApiModel {
         appointments_table.setItems(appointmentList);
     }
 
+    @FXML
+    private void selectEmployeeAppointmentTable(Long employee_id){
+        appointmentList.clear();
+        for (Appointment appointment : apiSession.getAllAppointments()){
+            if (appointment.getEmployee_id() == employee_id){
+                appointmentList.add(appointment);
+            }
+        }
+        appointments_table.setItems(appointmentList);
+    }
+
+    @FXML
+    private void selectDateAppointmentTable(String date){
+        appointmentList.clear();
+        for (Appointment appointment : apiSession.getAllAppointments()){
+            if (appointment.getDate().equals(date)){
+                appointmentList.add(appointment);
+            }
+        }        appointments_table.setItems(appointmentList);
+    }
+
+    @FXML
+    private void selectEmployeeAndDateAppointmentTable(Long employee_id, String date){
+        appointmentList.clear();
+        for (Appointment appointment : apiSession.getAllAppointments()){
+            if (appointment.getEmployee_id() == employee_id && appointment.getDate().equals(date)){
+                appointmentList.add(appointment);
+            }
+        }        appointments_table.setItems(appointmentList);
+    }
+
 
     SimpleStringProperty id;
     SimpleStringProperty employee_name;
     SimpleStringProperty employee_id;
     SimpleStringProperty date;
     SimpleStringProperty time;
-    SimpleStringProperty status;
     SimpleStringProperty client_name;
     SimpleStringProperty client_id;
     SimpleStringProperty category_name;
@@ -149,14 +193,13 @@ public class AppointmentsController implements ApiModel {
 
 
     public AppointmentsController(String id, String employee_id, String employee_name, String date, String time,
-                                  String status, String client_id, String client_name, String category_id,
+                                  String client_id, String client_name, String category_id,
                                   String category_name, String price) {
         this.id = new SimpleStringProperty(id);
         this.employee_name = new SimpleStringProperty(employee_name);
         this.employee_id = new SimpleStringProperty(employee_id);
         this.date = new SimpleStringProperty(date);
         this.time = new SimpleStringProperty(time);
-        this.status = new SimpleStringProperty(status);
         this.client_name = new SimpleStringProperty(client_name);
         this.client_id = new SimpleStringProperty(client_id);
         this.category_name = new SimpleStringProperty(category_name);
@@ -183,10 +226,6 @@ public class AppointmentsController implements ApiModel {
     public String getTime() { return time.get(); }
 
     public void setTime(String time) { this.time.set(time); }
-
-    public String getStatus() { return status.get(); }
-
-    public void setStatus(String status) { this.status.set(status); }
 
     public String getClient_name() { return client_name.get(); }
 
@@ -215,7 +254,6 @@ public class AppointmentsController implements ApiModel {
                 ", employee_id=" + employee_id +
                 ", category_id=" + category_id +
                 ", client_id=" + client_id +
-                ", status=" + status +
                 ", date=" + date +
                 ", time= " + time +
                 '}';
@@ -227,7 +265,6 @@ public class AppointmentsController implements ApiModel {
         Map<String, Object> map = new HashMap<>();
         map.put("date", date.get());
         map.put("time", time.get());
-        map.put("status", status.get()=="Свободно" ? true : false);
         map.put("employee_id", employee_id.get());
         map.put("client_id", client_id.get());
         map.put("category_id", category_id.get());
@@ -241,7 +278,6 @@ public class AppointmentsController implements ApiModel {
         map.put("id", id.get());
         map.put("date", date.get());
         map.put("time", time.get());
-        map.put("status", status.get()=="Свободно" ? true : false);
         map.put("employee_id", employee_id.get());
         map.put("client_id", client_id.get());
         map.put("category_id", category_id.get());

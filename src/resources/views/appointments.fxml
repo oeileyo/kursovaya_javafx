@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -31,14 +30,9 @@
                   <Insets right="15.0" />
                </HBox.margin>
             </DatePicker>
-            <RadioButton fx:id="status_selection" mnemonicParsing="false" prefHeight="32.0" prefWidth="136.0" text="Только свободные">
-               <HBox.margin>
-                  <Insets right="15.0" />
-               </HBox.margin>
-            </RadioButton>
             <Button fx:id="find_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="130.0" text="Найти записи">
                <HBox.margin>
-                  <Insets right="150.0" />
+                  <Insets right="300.0" />
                </HBox.margin>
             </Button>
             <Button fx:id="add_button" mnemonicParsing="false" prefHeight="32.0" prefWidth="130.0" text="Добавить запись">
@@ -57,14 +51,13 @@
         <columns>
           <TableColumn fx:id="id_column" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="employee_column" prefWidth="195.9348373413086" text="Сотрудник" />
-            <TableColumn fx:id="date_column" prefWidth="95.76751708984375" text="Дата" />
-            <TableColumn fx:id="time_column" prefWidth="74.6614990234375" text="Время" />
-            <TableColumn fx:id="status_column" prefWidth="120.60406494140625" text="Статус" />
-            <TableColumn fx:id="client_column" prefWidth="221.8958740234375" text="Клиент" />
-            <TableColumn fx:id="category_column" prefWidth="281.0614013671875" text="Категория" />
-            <TableColumn fx:id="price_column" prefWidth="111.03680419921875" text="Цена" />
+            <TableColumn fx:id="date_column" prefWidth="140.44158935546875" text="Дата" />
+            <TableColumn fx:id="time_column" prefWidth="117.05841064453125" text="Время" />
+            <TableColumn fx:id="client_column" prefWidth="238.31027221679688" text="Клиент" />
+            <TableColumn fx:id="category_column" prefWidth="280.64971923828125" text="Категория" />
+            <TableColumn fx:id="price_column" prefWidth="124.49639892578125" text="Цена" />
         </columns>
       </TableView>
-      <Label fx:id="message" alignment="CENTER" layoutX="209.0" layoutY="14.0" prefHeight="32.0" prefWidth="408.0" textAlignment="CENTER" />
+      <Label fx:id="message" alignment="CENTER" layoutX="209.0" layoutY="14.0" prefHeight="32.0" prefWidth="408.0" textAlignment="CENTER" textFill="#7a1414" />
    </children>
 </AnchorPane>

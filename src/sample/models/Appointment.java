@@ -16,7 +16,6 @@ public class Appointment implements ApiModel {
     private StringProperty employee_name;
     private StringProperty date;
     private StringProperty time;
-    private StringProperty status;
     private LongProperty client_id;
     private StringProperty client_name;
     private LongProperty category_id;
@@ -25,47 +24,29 @@ public class Appointment implements ApiModel {
 
     // занятая запись
     public Appointment(Long id, Long employee_id, String employee_name, String date,
-                       String time, String status, Long client_id, String client_name, Long category_id,
+                       String time, Long client_id, String client_name, Long category_id,
                        String category_name, Integer price) {
         this.id = new SimpleLongProperty(id);
         this.employee_id = new SimpleLongProperty(employee_id);
         this.employee_name = new SimpleStringProperty(employee_name);
         this.date = new SimpleStringProperty(date);
         this.time = new SimpleStringProperty(time);
-        this.status = new SimpleStringProperty(status);
         this.client_id = new SimpleLongProperty(client_id);
         this.client_name = new SimpleStringProperty(client_name);
         this.category_id = new SimpleLongProperty(category_id);
         this.category_name = new SimpleStringProperty(category_name);
         this.price = new SimpleIntegerProperty(price);
-    }
-
-    // свободная запись
-    public Appointment(Long id, Long employee_id, String employee_name, String date,
-                       String time, String status) {
-        this.id = new SimpleLongProperty(id);
-        this.employee_id = new SimpleLongProperty(employee_id);
-        this.employee_name = new SimpleStringProperty(employee_name);
-        this.date = new SimpleStringProperty(date);
-        this.time = new SimpleStringProperty(time);
-        this.status = new SimpleStringProperty(status);
-        this.client_id = null;
-        this.client_name = null;
-        this.category_id = null;
-        this.category_name = null;
-        this.price = null;
     }
 
     // новая занятая запись
     public Appointment(Long employee_id, String employee_name, String date,
-                       String time, String status, Long client_id, String client_name, Long category_id,
+                       String time, Long client_id, String client_name, Long category_id,
                        String category_name, Integer price) {
         this.id = null;
         this.employee_id = new SimpleLongProperty(employee_id);
         this.employee_name = new SimpleStringProperty(employee_name);
         this.date = new SimpleStringProperty(date);
         this.time = new SimpleStringProperty(time);
-        this.status = new SimpleStringProperty(status);
         this.client_id = new SimpleLongProperty(client_id);
         this.client_name = new SimpleStringProperty(client_name);
         this.category_id = new SimpleLongProperty(category_id);
@@ -73,17 +54,15 @@ public class Appointment implements ApiModel {
         this.price = new SimpleIntegerProperty(price);
     }
 
-    // новая свободная запись
-    public Appointment(Long employee_id, String employee_name, String date, String time, String status) {
+    public Appointment(Long employee_id, String date, String time, Long client_id, Long category_id) {
         this.id = null;
         this.employee_id = new SimpleLongProperty(employee_id);
-        this.employee_name = new SimpleStringProperty(employee_name);
+        this.employee_name = null;
         this.date = new SimpleStringProperty(date);
         this.time = new SimpleStringProperty(time);
-        this.status = new SimpleStringProperty(status);
-        this.client_id = null;
+        this.client_id = new SimpleLongProperty(client_id);
         this.client_name = null;
-        this.category_id = null;
+        this.category_id = new SimpleLongProperty(category_id);
         this.category_name = null;
         this.price = null;
     }
@@ -95,7 +74,6 @@ public class Appointment implements ApiModel {
         this.employee_name = null;
         this.date = null;
         this.time = null;
-        this.status = null;
         this.client_id = null;
         this.client_name = null;
         this.category_id = null;
@@ -113,8 +91,6 @@ public class Appointment implements ApiModel {
     public String getDate() { return date.get(); }
 
     public String getTime() { return time.get(); }
-
-    public String getStatus() { return status.get(); }
 
     public long getClient_id() { return client_id.get(); }
 
@@ -137,13 +113,11 @@ public class Appointment implements ApiModel {
 
     public void setTime(String time) { this.time.set(time); }
 
-    public void setStatus(String status) { this.status.set(status); }
-
-    public void setClient_id(long client_id) { this.client_id.set(client_id); }
+    public void setClient_id(Long client_id) { this.client_id.set(client_id); }
 
     public void setClient_name(String client_name) { this.client_name.set(client_name); }
 
-    public void setCategory_id(long category_id) { this.category_id.set(category_id); }
+    public void setCategory_id(Long category_id) { this.category_id.set(category_id); }
 
     public void setCategory_name(String category_name) { this.category_name.set(category_name); }
 
@@ -155,7 +129,6 @@ public class Appointment implements ApiModel {
         Map<String, Object> map = new HashMap<>();
         map.put("date", date.get());
         map.put("time", time.get());
-        map.put("status", status.get()=="Свободно" ? true : false);
         map.put("employee_id", employee_id.get());
         map.put("client_id", client_id.get());
         map.put("category_id", category_id.get());
@@ -169,7 +142,6 @@ public class Appointment implements ApiModel {
         map.put("id", id.get());
         map.put("date", date.get());
         map.put("time", time.get());
-        map.put("status", status.get()=="Свободно" ? true : false);
         map.put("employee_id", employee_id.get());
         map.put("client_id", client_id.get());
         map.put("category_id", category_id.get());
