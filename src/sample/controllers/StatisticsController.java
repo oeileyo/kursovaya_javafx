@@ -50,7 +50,7 @@ public class StatisticsController {
             pieChartData.add(new PieChart.Data(employee.getFirst_name(), count));
         }
         pieChart.setData(pieChartData);
-        pieChart.setTitle("(Отражает количество записей к каждому изсотрудников)");
+        pieChart.setTitle("(Отражает количество записей к каждому из сотрудников)");
     }
 
     public void categoryStatistics() {
@@ -72,6 +72,6 @@ public class StatisticsController {
             pieChartData2.add(new PieChart.Data(category.getName(), count));
         }
         pieChart2.setData(pieChartData2);
-        pieChart2.setTitle("(Отражает количество записей к каждому изсотрудников)");
+        pieChart2.setTitle("(Отражает количество записей по каждой из категорий)");
     }
 }
