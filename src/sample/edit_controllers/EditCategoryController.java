@@ -13,13 +13,12 @@ import javafx.stage.StageStyle;
 import sample.add_controllers.AddEmployeeController;
 import sample.controllers.MainMenuController;
 import sample.models.Category;
-import sample.models.Employee;
 import sample.utils.ApiSession;
-
 import java.io.IOException;
 
+/* Controller for editing category page */
 public class EditCategoryController {
-
+    /* FXML components */
     @FXML
     private TextField name_field;
 
@@ -35,10 +34,11 @@ public class EditCategoryController {
     @FXML
     private Label message;
 
+    /* Parameters */
     private Category category;
-
     private ApiSession apiSession = new ApiSession();
 
+    /* Show page method */
     public static void show(Category category) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(AddEmployeeController.class.getResource("/edit_views/edit_category.fxml"));
@@ -63,22 +63,26 @@ public class EditCategoryController {
         stage.show();
     }
 
+    /* Methods for buttons */
     private void buttonClick() {
         edit_button.setOnAction(event -> handleOk());
         cancel_button.setOnAction(event -> handleCancel());
     }
 
+    /* Filling fields with data from DB */
     public void setCategory(Category category) {
         this.category = category;
         name_field.setText(category.getName());
         price_field.setText(String.valueOf(category.getPrice()));
     }
 
+    /* Method for cancel button */
     @FXML
     private  void handleCancel() {
         name_field.getScene().getWindow().hide();
     }
 
+    /* Method for ok button */
     @FXML
     private void handleOk() {
         try {
@@ -94,6 +98,6 @@ public class EditCategoryController {
         }
     }
 
+    /* Constructor */
     public EditCategoryController(){}
-
 }

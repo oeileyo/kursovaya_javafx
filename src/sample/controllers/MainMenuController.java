@@ -41,6 +41,9 @@ public class MainMenuController implements Initializable {
     private Button appointmentsButton;
 
     @FXML
+    private Button statisticsButton;
+
+    @FXML
     private Button aboutButton;
 
     public static Stage stage = new Stage();
@@ -62,6 +65,7 @@ public class MainMenuController implements Initializable {
         employeesButton.setOnAction(event -> loadView("/views/employees.fxml"));
         categoriesButton.setOnAction(event -> loadView("/views/categories.fxml"));
         appointmentsButton.setOnAction(event -> loadView("/views/appointments.fxml"));
+        statisticsButton.setOnAction(event -> loadView("/views/statistics.fxml"));
         aboutButton.setOnAction(event -> loadView("/views/about.fxml"));
     }
 

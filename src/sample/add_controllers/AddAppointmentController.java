@@ -14,7 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import sample.Main;
 import sample.controllers.MainMenuController;
 import sample.models.Appointment;
 import sample.models.Category;
@@ -22,13 +21,11 @@ import sample.models.Client;
 import sample.models.Employee;
 import sample.utils.ApiSession;
 import sample.utils.DateUtil;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
+/* Controller for adding appointment page */
 public class AddAppointmentController {
-
+    /* FXML components */
     @FXML
     private TextField client_name_field;
 
@@ -56,6 +53,7 @@ public class AddAppointmentController {
     @FXML
     private ComboBox<String> category_select;
 
+    /* Parameters */
     private ApiSession apiSession = new ApiSession();
     ObservableList<Employee> employeeList = FXCollections.observableArrayList();
     ObservableList<String> employeeNameList = FXCollections.observableArrayList();
@@ -63,6 +61,7 @@ public class AddAppointmentController {
     ObservableList<String> categoryNameList = FXCollections.observableArrayList();
     ObservableList<String> timeList = FXCollections.observableArrayList();
 
+    /* Show page method */
     public static void show() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(AddAppointmentController.class.getResource("/add_views/add_appointment.fxml"));
@@ -89,11 +88,13 @@ public class AddAppointmentController {
         stage.show();
     }
 
+    /* Methods for buttons */
     private void buttonClick() {
         add_button.setOnAction(event -> handleOk());
         cancel_button.setOnAction(event -> handleCancel());
     }
 
+    /* Setting data for employee combo box */
     private void employeeComboBox(){
         employeeList.clear();
         employeeList.addAll(apiSession.getAllEmployees());
@@ -105,6 +106,7 @@ public class AddAppointmentController {
         employee_select.setItems(employeeNameList);
     }
 
+    /* Setting data for time combo box */
     private void timeComboBox(){
         timeList.clear();
         timeList = FXCollections.observableArrayList("10:00", "12:00",
@@ -112,6 +114,7 @@ public class AddAppointmentController {
         time_select.setItems(timeList);
     }
 
+    /* Setting data for category combo box */
     private void categoryComboBox(){
         categoryList.clear();
         categoryList.addAll(apiSession.getAllCategories());
@@ -123,6 +126,7 @@ public class AddAppointmentController {
         category_select.setItems(categoryNameList);
     }
 
+    /* Input data validation */
     private boolean isInputValid() {
         String errorMessage = "";
         if (client_name_field.getText() == null || client_name_field.getText().length() == 0) {
@@ -147,11 +151,13 @@ public class AddAppointmentController {
         }
     }
 
+    /* Method for cancel button */
     @FXML
     private  void handleCancel() {
         client_name_field.getScene().getWindow().hide();
     }
 
+    /* Method for ok button */
     @FXML
     private void handleOk() {
         if (isInputValid()) {
@@ -171,6 +177,6 @@ public class AddAppointmentController {
         }
     }
 
+    /* Constructor */
     public AddAppointmentController(){}
-
 }

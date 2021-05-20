@@ -11,17 +11,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import sample.controllers.EmployeesController;
 import sample.controllers.MainMenuController;
 import sample.models.Employee;
 import sample.utils.ApiSession;
-
-import java.io.EOFException;
 import java.io.IOException;
-import java.util.Arrays;
 
+/* Controller for adding employee page */
 public class AddEmployeeController {
-
+    /* FXML components */
     @FXML
     private TextField id_field;
 
@@ -40,9 +37,10 @@ public class AddEmployeeController {
     @FXML
     private Label message;
 
-
+    /* Parameters */
     private ApiSession apiSession = new ApiSession();
 
+    /* Show page method */
     public static void show() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(AddEmployeeController.class.getResource("/add_views/add_employee.fxml"));
@@ -66,11 +64,13 @@ public class AddEmployeeController {
         stage.show();
     }
 
+    /* Methods for buttons */
     private void buttonClick() {
         add_button.setOnAction(event -> handleOk());
         cancel_button.setOnAction(event -> handleCancel());
     }
 
+    /* Input data validation */
     private boolean isInputValid() {
         String errorMessage = "";
 
@@ -90,11 +90,13 @@ public class AddEmployeeController {
         }
     }
 
+    /* Method for cancel button */
     @FXML
     private  void handleCancel() {
         first_name_field.getScene().getWindow().hide();
     }
 
+    /* Method for ok button */
     @FXML
     private void handleOk() {
         if (isInputValid()) {
@@ -104,5 +106,6 @@ public class AddEmployeeController {
         }
     }
 
+    /* Constructor */
     public AddEmployeeController(){}
 }

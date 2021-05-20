@@ -12,31 +12,27 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import sample.controllers.MainMenuController;
 import sample.models.Category;
-import sample.models.Employee;
 import sample.utils.ApiSession;
-
 import java.io.IOException;
 
+/* Controller for adding category page */
 public class AddCategoryController {
-
+    /* FXML components */
     @FXML
     private TextField name_field;
-
     @FXML
     private TextField price_field;
-
     @FXML
     private Button add_button;
-
     @FXML
     private Label message;
-
     @FXML
     private Button cancel_button;
 
-
+    /* Parameters */
     private ApiSession apiSession = new ApiSession();
 
+    /* Show page method */
     public static void show() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(AddCategoryController.class.getResource("/add_views/add_category.fxml"));
@@ -60,11 +56,13 @@ public class AddCategoryController {
         stage.show();
     }
 
+    /* Methods for buttons */
     private void buttonClick() {
         add_button.setOnAction(event -> handleOk());
         cancel_button.setOnAction(event -> handleCancel());
     }
 
+    /* Input data validation */
     private boolean isInputValid() {
         String errorMessage = "";
         if (name_field.getText() == null || name_field.getText().length() == 0) {
@@ -89,15 +87,17 @@ public class AddCategoryController {
         }
     }
 
+    /* Method for cancel button */
     @FXML
     private  void handleCancel() {
         name_field.getScene().getWindow().hide();
     }
 
+    /* Method for ok button */
     @FXML
     private void handleOk() {
         if (isInputValid()) {
-            Category category = new Category(); //name_field.getText(), price_field.getText()
+            Category category = new Category();
             category.setName(name_field.getText());
             category.setPrice(Integer.valueOf(price_field.getText()));
             apiSession.createCategory(category);
@@ -105,5 +105,6 @@ public class AddCategoryController {
         }
     }
 
+    /* Constructor */
     public AddCategoryController(){}
 }

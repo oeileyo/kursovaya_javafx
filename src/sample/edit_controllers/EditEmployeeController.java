@@ -13,11 +13,11 @@ import sample.add_controllers.AddEmployeeController;
 import sample.controllers.MainMenuController;
 import sample.models.Employee;
 import sample.utils.ApiSession;
-
 import java.io.IOException;
 
+/* Controller for editing employee page */
 public class EditEmployeeController {
-
+    /* FXML components */
     @FXML
     private TextField first_name_field;
 
@@ -30,11 +30,11 @@ public class EditEmployeeController {
     @FXML
     private Button edit_button;
 
-
+    /* Parameters */
     private Employee employee;
-
     private ApiSession apiSession = new ApiSession();
 
+    /* Show page method */
     public static void show(Employee employee) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(AddEmployeeController.class.getResource("/edit_views/edit_employee.fxml"));
@@ -59,22 +59,26 @@ public class EditEmployeeController {
         stage.show();
     }
 
+    /* Methods for buttons */
     private void buttonClick() {
         edit_button.setOnAction(event -> handleOk());
         cancel_button.setOnAction(event -> handleCancel());
     }
 
+    /* Filling fields with data from DB */
     public void setEmployee(Employee employee) {
         this.employee = employee;
         first_name_field.setText(employee.getFirst_name());
         last_name_field.setText(employee.getLast_name());
     }
 
+    /* Method for cancel button */
     @FXML
     private  void handleCancel() {
         first_name_field.getScene().getWindow().hide();
     }
 
+    /* Method for ok button */
     @FXML
     private void handleOk() {
         employee.setFirst_name(first_name_field.getText());
@@ -83,5 +87,6 @@ public class EditEmployeeController {
         first_name_field.getScene().getWindow().hide();
     }
 
+    /* Constructor */
     public EditEmployeeController(){}
 }

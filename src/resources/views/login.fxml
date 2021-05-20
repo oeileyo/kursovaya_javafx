@@ -17,7 +17,7 @@
             <Image url="@../assets/jabka.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="-1.0" layoutY="101.0" prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #b0b6ea;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="101.0">
+      <AnchorPane layoutX="-1.0" layoutY="101.0" prefHeight="599.0" prefWidth="1200.0" style="-fx-background-color: #c9cdea;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="101.0">
          <children>
             <AnchorPane layoutX="500.0" layoutY="70.0" prefHeight="532.0" prefWidth="560.0" style="-fx-background-color: #BFABE0;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="70.0">
                <children>

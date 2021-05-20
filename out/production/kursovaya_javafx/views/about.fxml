@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AboutController">
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #c9cdea;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AboutController">
    <children>
       <Hyperlink alignment="CENTER" layoutX="367.0" layoutY="283.0" text="https://github.com/oeileyo/kursovaya_javafx" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0">
          <font>
@@ -28,11 +28,6 @@
          </font>
       </Label>
       <Label alignment="CENTER" layoutX="507.0" layoutY="345.0" text="Сервер на Java:">
-         <font>
-            <Font name="SignPainter-HouseScript" size="35.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="549.0" layoutY="450.0" text="JavaDoc:">
          <font>
             <Font name="SignPainter-HouseScript" size="35.0" />
          </font>
